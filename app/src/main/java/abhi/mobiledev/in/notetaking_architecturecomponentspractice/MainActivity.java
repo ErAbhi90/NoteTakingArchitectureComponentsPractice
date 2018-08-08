@@ -12,7 +12,8 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import abhi.mobiledev.in.notetaking_architecturecomponentspractice.Model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.ui.NotesAdapter;
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.utilities.SampleData;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
 
     private List<NoteEntity> notesData = new ArrayList<>();
+    private NotesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new NotesAdapter(notesData, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
