@@ -1,6 +1,7 @@
 package abhi.mobiledev.in.notetaking_architecturecomponentspractice;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +9,11 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.Model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.utilities.SampleData;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+
+    private List<NoteEntity> notesData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        notesData.addAll(SampleData.getNotes());
+        for (NoteEntity note : notesData){
+            Log.i("NoteTaking", note.toString());
+        }
     }
 
     private void initRecyclerView() {
