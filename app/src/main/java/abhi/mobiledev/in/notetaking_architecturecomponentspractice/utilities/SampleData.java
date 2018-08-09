@@ -32,9 +32,9 @@ public class SampleData {
 
     public static List<NoteEntity> getNotes(){
         List<NoteEntity> notes = new ArrayList<>();
-        notes.add(new NoteEntity(1,getDate(0),Sample_Text_1));
-        notes.add(new NoteEntity(2,getDate(-1),Sample_Text_2));
-        notes.add(new NoteEntity(3,getDate(-2),Sample_Text_3));
+        notes.add(new NoteEntity(getDate(0), Sample_Text_1));
+        notes.add(new NoteEntity(getDate(-1), Sample_Text_2));
+        notes.add(new NoteEntity(getDate(-2), Sample_Text_3));
         return notes;
     }
 
