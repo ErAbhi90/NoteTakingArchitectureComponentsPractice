@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import abhi.mobiledev.in.notetaking_architecturecomponentspractice.model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.database.NoteEntity;
 
 public class SampleData {
 

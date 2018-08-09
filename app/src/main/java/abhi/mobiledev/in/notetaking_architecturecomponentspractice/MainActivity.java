@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import abhi.mobiledev.in.notetaking_architecturecomponentspractice.model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.database.NoteEntity;
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.ui.NotesAdapter;
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.utilities.SampleData;
 import androidx.appcompat.app.AppCompatActivity;

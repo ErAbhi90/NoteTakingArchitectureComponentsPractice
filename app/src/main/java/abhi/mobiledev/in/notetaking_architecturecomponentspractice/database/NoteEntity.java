@@ -1,4 +1,4 @@
-package abhi.mobiledev.in.notetaking_architecturecomponentspractice.model;
+package abhi.mobiledev.in.notetaking_architecturecomponentspractice.database;
 
 import java.util.Date;
 

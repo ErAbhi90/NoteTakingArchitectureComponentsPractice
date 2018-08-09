@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.R;
-import abhi.mobiledev.in.notetaking_architecturecomponentspractice.model.NoteEntity;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.database.NoteEntity;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
