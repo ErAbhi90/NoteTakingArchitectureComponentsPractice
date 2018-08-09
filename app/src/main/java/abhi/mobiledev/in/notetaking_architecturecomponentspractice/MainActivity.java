@@ -11,9 +11,10 @@ import java.util.List;
 
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.database.NoteEntity;
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.ui.NotesAdapter;
-import abhi.mobiledev.in.notetaking_architecturecomponentspractice.utilities.SampleData;
+import abhi.mobiledev.in.notetaking_architecturecomponentspractice.viewModel.MainViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<NoteEntity> notesData = new ArrayList<>();
     private NotesAdapter mAdapter;
+    private MainViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
-
+        initViewModel();
         initRecyclerView();
 
 
-        notesData.addAll(SampleData.getNotes());
+        notesData.addAll(mViewModel.mNotes);
         for (NoteEntity note : notesData){
             Log.i("NoteTaking", note.toString());
         }
+    }
+
+    private void initViewModel() {
+        mViewModel = ViewModelProviders.of(this)
+                .get(MainViewModel.class);
+
     }
 
     private void initRecyclerView() {
@@ -76,10 +84,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add_sample_data) {
+            addSampleData();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addSampleData() {
+        mViewModel.addSampleData();
     }
 }
