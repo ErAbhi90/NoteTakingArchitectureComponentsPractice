@@ -7,18 +7,18 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import abhi.mobiledev.in.notetaking_architecturecomponentspractice.utilities.SampleData;
+import androidx.lifecycle.LiveData;
 
 public class AppRepository {
 
     private static AppRepository ourInstance;
-    public List<NoteEntity> mNotes;
+    public LiveData<List<NoteEntity>> mNotes;
     private AppDatabase mDb;
     private Executor executor = Executors.newSingleThreadExecutor();
 
     private AppRepository(Context context) {
-
-        mNotes = SampleData.getNotes();
         mDb = AppDatabase.getInstance(context);
+        mNotes = getAllNotes();
     }
 
     public static AppRepository getInstance(Context context) {
@@ -35,5 +35,9 @@ public class AppRepository {
                 mDb.noteDao().insertAll(SampleData.getNotes());
             }
         });
+    }
+
+    private LiveData<List<NoteEntity>> getAllNotes() {
+        return mDb.noteDao().getAll();
     }
 }
